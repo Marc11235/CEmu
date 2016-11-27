@@ -333,10 +333,11 @@ private:
     QString getAddressString(QString, bool*);
 
     // Lua
-    void initLuaThings();
+    void initLuaThings(sol::state &lua, bool isREPL);
     void loadLuaScript();
     void saveLuaScript();
     void runLuaScript();
+    void LuaREPLeval();
 
 #ifdef _WIN32
     // Win32 Console Toggle
@@ -399,7 +400,8 @@ private:
 
     QString pathSettings;
 
-    sol::state lua;
+    sol::state ed_lua;
+    sol::state repl_lua;
 };
 
 #endif

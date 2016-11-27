@@ -242,6 +242,9 @@ MainWindow::MainWindow(CEmuOpts cliOpts,QWidget *p) : QMainWindow(p), ui(new Ui:
     connect(ui->buttonRunLuaScript, &QPushButton::clicked, this, &MainWindow::runLuaScript);
     connect(ui->buttonLoadLuaScript, &QPushButton::clicked, this, &MainWindow::loadLuaScript);
     connect(ui->buttonSaveLuaScript, &QPushButton::clicked, this, &MainWindow::saveLuaScript);
+    connect(ui->resetREPLLuaState, &QPushButton::clicked, this, [&](){ this->initLuaThings(repl_lua, true); });
+    connect(ui->clearREPLConsole, &QPushButton::clicked, this, [&](){ ui->REPLConsole->clear(); });
+    connect(ui->REPLInput, &QLineEdit::returnPressed, this, [&](){ this->LuaREPLeval(); });
 
     // Meta Types
     qRegisterMetaType<uint32_t>("uint32_t");
@@ -410,6 +413,8 @@ MainWindow::MainWindow(CEmuOpts cliOpts,QWidget *p) : QMainWindow(p), ui(new Ui:
             sendingHandler.sendFiles(opts.sendRAMFiles, LINK_RAM);
         }
     }
+
+    initLuaThings(repl_lua, true);
 
     setThrottleMode(opts.useUnthrottled ? Qt::Unchecked : Qt::Checked);
     ui->lcdWidget->setFocus();
