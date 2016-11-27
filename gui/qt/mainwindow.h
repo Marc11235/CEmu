@@ -16,6 +16,7 @@
 #include "lcdpopout.h"
 #include "keypad/qtkeypadbridge.h"
 #include "qhexedit/qhexedit.h"
+#include "luaeditor.h"
 
 #include "../../core/cpu.h"
 #include "../../core/vat.h"

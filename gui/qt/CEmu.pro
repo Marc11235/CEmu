@@ -95,6 +95,7 @@ SOURCES +=  utils.cpp \
     hexeditor.cpp \
     settings.cpp \
     luascripting.cpp \
+    luaeditor.cpp \
     basiccodeviewerwindow.cpp \
     keypad/qtkeypadbridge.cpp \
     keypad/keymap.cpp \
@@ -204,6 +205,7 @@ HEADERS  +=  utils.h \
     sendinghandler.h \
     debugger.h \
     basiccodeviewerwindow.h \
+    luaeditor.h \
     keypad/qtkeypadbridge.h \
     keypad/keymap.h \
     keypad/keypadwidget.h \
